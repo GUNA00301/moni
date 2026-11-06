@@ -1,0 +1,253 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-heading: 'Fraunces', Georgia, serif;
+    --font-handwriting: 'Caveat', cursive;
+    --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    font-family: var(--font-body);
+  }
+}
+
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+.font-handwriting {
+  font-family: var(--font-handwriting);
+}
+
+/* 3D card flip styles */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Custom animations & glow */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes flameFlicker {
+  0%, 100% {
+    transform: scaleY(1) scaleX(1) skewX(0deg);
+    opacity: 0.95;
+  }
+  25% {
+    transform: scaleY(1.12) scaleX(0.92) skewX(2deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scaleY(0.9) scaleX(1.05) skewX(-2deg);
+    opacity: 0.88;
+  }
+  75% {
+    transform: scaleY(1.08) scaleX(0.96) skewX(1deg);
+    opacity: 0.98;
+  }
+}
+
+@keyframes smokeRise {
+  0% {
+    opacity: 0.8;
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-40px) scale(2.2) rotate(15deg);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 5s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+.animate-flame {
+  transform-origin: bottom center;
+  animation: flameFlicker 0.4s ease-in-out infinite alternate;
+}
+
+.animate-smoke {
+  animation: smokeRise 1.4s ease-out forwards;
+}
+
+/* Smooth glass aesthetics */
+.glass-panel {
+  background: rgba(23, 29, 66, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(244, 114, 182, 0.18);
+}
+
+.glass-card {
+  background: rgba(30, 27, 75, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0b1026;
+}
+::-webkit-scrollbar-thumb {
+  background: #462255;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #f472b6;
+}
+
+/* 3D-CSS Animated Balloons */
+.balloon-3d {
+  width: 50px;
+  height: 62px;
+  border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+  position: relative;
+  box-shadow: inset -6px -6px 14px rgba(0, 0, 0, 0.4),
+              inset 6px 6px 14px rgba(255, 255, 255, 0.4),
+              0 14px 28px rgba(0, 0, 0, 0.45);
+  transform-origin: bottom center;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.balloon-3d:hover {
+  transform: scale(1.08);
+}
+
+/* 3D Glossy Highlight Spot */
+.balloon-3d::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  width: 14px;
+  height: 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.25) 55%, transparent 100%);
+  transform: rotate(-32deg);
+  pointer-events: none;
+}
+
+/* Secondary subtle reflection spot */
+.balloon-3d::after {
+  content: '';
+  position: absolute;
+  top: 13px;
+  left: 26px;
+  width: 6px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: rotate(-25deg);
+  pointer-events: none;
+}
+
+/* Balloon Color Gradients */
+.balloon-pink {
+  background: radial-gradient(circle at 40% 35%, #f472b6 0%, #db2777 55%, #831843 100%);
+}
+.balloon-blue {
+  background: radial-gradient(circle at 40% 35%, #38bdf8 0%, #0284c7 55%, #075985 100%);
+}
+.balloon-purple {
+  background: radial-gradient(circle at 40% 35%, #c084fc 0%, #9333ea 55%, #581c87 100%);
+}
+.balloon-gold {
+  background: radial-gradient(circle at 40% 35%, #fef08a 0%, #eab308 55%, #854d0e 100%);
+}
+.balloon-peach {
+  background: radial-gradient(circle at 40% 35%, #fda4af 0%, #f43f5e 55%, #9f1239 100%);
+}
+
+/* Balloon Knot */
+.balloon-knot {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 9px;
+  height: 7px;
+  clip-path: polygon(30% 0%, 70% 0%, 100% 100%, 0% 100%);
+  opacity: 0.9;
+}
+
+/* Dangling String Sway */
+@keyframes stringSway {
+  0%, 100% {
+    transform: rotate(4deg);
+  }
+  50% {
+    transform: rotate(-5deg);
+  }
+}
+
+.balloon-string-wrapper {
+  position: absolute;
+  top: 58px;
+  left: 50%;
+  transform-origin: top center;
+  animation: stringSway 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Balloon Pop Animation */
+@keyframes balloonPop {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  40% {
+    transform: scale(1.35);
+    opacity: 0.7;
+    filter: brightness(2);
+  }
+  100% {
+    transform: scale(0.05);
+    opacity: 0;
+  }
+}
+
+.animate-balloon-pop {
+  animation: balloonPop 0.22s forwards ease-out;
+}
+

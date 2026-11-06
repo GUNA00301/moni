@@ -1,0 +1,6 @@
+{
+  "name": "Monisha's 21st Birthday Surprise",
+  "description": "A dusk-sky birthday surprise celebration website for Monisha turning 21, featuring interactive cake, floating lanterns, photo polaroid, memory flip cards, and fireworks.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
