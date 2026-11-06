@@ -587,7 +587,21 @@ export function downloadStandaloneHTML() {
           popSound();
         }, i * 300);
       }
-      alert("Happy 21st Birthday, Monisha! 🎂✨ May all your wildest dreams come true!");
+      const toast = document.createElement('div');
+      toast.style.position = 'fixed';
+      toast.style.bottom = '2rem';
+      toast.style.left = '50%';
+      toast.style.transform = 'translateX(-50%)';
+      toast.style.background = 'linear-gradient(135deg, #ec4899, #8b5cf6)';
+      toast.style.color = '#fff';
+      toast.style.padding = '1rem 1.75rem';
+      toast.style.borderRadius = '9999px';
+      toast.style.fontWeight = 'bold';
+      toast.style.zIndex = '10000';
+      toast.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
+      toast.innerText = 'Happy 21st Birthday, Monisha! 🎂✨ May all your wildest dreams come true!';
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 4500);
     }
   </script>
 </body>

@@ -10,14 +10,18 @@ export const PolaroidSection: React.FC = () => {
   const [rotation, setRotation] = useState<number>(-2);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
+  const [uploadError, setUploadError] = useState<string | null>(null);
+
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
     if (!file.type.startsWith('image/')) {
-      alert('Please select an image file (JPEG, PNG, etc.)');
+      setUploadError('Please select a valid image file (JPEG, PNG, WEBP, etc.)');
+      setTimeout(() => setUploadError(null), 4000);
       return;
     }
+    setUploadError(null);
 
     const reader = new FileReader();
     reader.onload = (event) => {
@@ -56,6 +60,11 @@ export const PolaroidSection: React.FC = () => {
           <p className="text-sm text-slate-300 font-sans">
             Tap the polaroid or button below to add your favorite picture of Monisha!
           </p>
+          {uploadError && (
+            <div className="mt-2 text-xs text-rose-300 bg-rose-500/20 border border-rose-400/30 px-3 py-1.5 rounded-full inline-block animate-shake">
+              {uploadError}
+            </div>
+          )}
         </div>
 
         {/* Hidden File Input */}
